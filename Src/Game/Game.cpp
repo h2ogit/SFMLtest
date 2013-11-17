@@ -19,17 +19,24 @@ void Game::log(const std::string &msg)
 int Game::Start()
 {
 	_Render = sf::RenderWindow(sf::VideoMode(wWidh, wHeight), gamename);
+	if (&_Render == nullptr)
+	{
+		log("ERROR: render none");
+		return EXIT_FAILURE;
+	}
 	_Render.setMouseCursorVisible(false);
+	bRuning = true;
+	
 
 	// Create some text to draw on top of our OpenGL object
-    Font font;
-    if (!font.loadFromFile(ResPath+"sansation.ttf"))
-        return EXIT_FAILURE;
-    Text text("NewMan Killer v0.1b", font);
-    text.setColor(Color(255, 0, 255, 255));
-    text.setPosition(wWidh - 300, wHeight-50);
+    //Font font;
+    //if (!font.loadFromFile(ResPath+"sansation.ttf"))
+    //    return EXIT_FAILURE;
+    //Text text("NewMan Killer v0.1b", font);
+    //text.setColor(Color(255, 0, 255, 255));
+    //text.setPosition(wWidh - 300, wHeight-50);
 
-	while (window.isOpen())
+	while (bRuning)
 	{
 		float MouseX = Mouse::getPosition(window).x;
         float MouseY = Mouse::getPosition(window).y;
