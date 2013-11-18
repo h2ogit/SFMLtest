@@ -1,18 +1,68 @@
-﻿Построение начато 17.11.2013 1:43:24.
-     1>Проект "D:\Dev\GitHub\SFMLtest\Src\SFML.vcxproj" в узле 2 (целевые объекты Build).
+﻿Построение начато 18.11.2013 16:56:15.
+     1>Проект "D:\GitHub\SFMLtest\Src\SFML.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"Include\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"TEMP\\" /Fd"TEMP\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Game\main.cpp
+         D:\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"Include\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"TEMP\\" /Fd"TEMP\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Game\Actor.cpp Game\Game.cpp Game\Input.cpp Game\Map.cpp Game\Projectile.cpp Game\main.cpp
          main.cpp
-     1>d:\dev\github\sfmltest\src\game\main.cpp(60): warning C4244: =: преобразование "const int" в "float", возможна потеря данных
-     1>d:\dev\github\sfmltest\src\game\main.cpp(61): warning C4244: =: преобразование "const int" в "float", возможна потеря данных
-     1>d:\dev\github\sfmltest\src\game\main.cpp(113): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
-     1>d:\dev\github\sfmltest\src\game\main.cpp(114): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\bin\Win32\SFMLWin32Debug.exe" /INCREMENTAL /NOLOGO /LIBPATH:"Include\SFML-2.1\lib" "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-main-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"..\bin\Win32\SFMLWin32Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\bin\Win32\SFMLWin32Debug.lib" /MACHINE:X86 TEMP\main.obj
-         TEMP\Projectile.obj
-         SFML.vcxproj -> D:\Dev\GitHub\SFMLtest\Src\..\bin\Win32\SFMLWin32Debug.exe
-     1>Построение проекта "D:\Dev\GitHub\SFMLtest\Src\SFML.vcxproj" завершено (целевые объекты Build).
+     1>d:\github\sfmltest\src\game\main.cpp : fatal error C1033: невозможно открыть базу данных программы "d:\github\sfmltest\src\temp\vc110.pdb"
+         Projectile.cpp
+     1>d:\github\sfmltest\src\game\projectile.cpp : fatal error C1033: невозможно открыть базу данных программы "d:\github\sfmltest\src\temp\vc110.pdb"
+         Map.cpp
+     1>d:\github\sfmltest\src\game\map.cpp : fatal error C1033: невозможно открыть базу данных программы "d:\github\sfmltest\src\temp\vc110.pdb"
+         Input.cpp
+     1>d:\github\sfmltest\src\game\input.h(9): error C2061: синтаксическая ошибка: идентификатор "Game"
+     1>d:\github\sfmltest\src\game\input.h(11): error C2653: sf: не является именем класса или пространства имен
+     1>d:\github\sfmltest\src\game\input.h(11): error C2061: синтаксическая ошибка: идентификатор "Event"
+     1>d:\github\sfmltest\src\game\input.h(12): error C2653: sf: не является именем класса или пространства имен
+     1>d:\github\sfmltest\src\game\input.h(12): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+     1>d:\github\sfmltest\src\game\input.h(12): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>d:\github\sfmltest\src\game\input.h(12): warning C4183: GetMousePos: отсутствие возвращаемого типа; предполагается функция-член, возвращающая "int"
+     1>d:\github\sfmltest\src\game\input.h(14): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+     1>d:\github\sfmltest\src\game\input.h(14): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>d:\github\sfmltest\src\game\input.h(15): error C2653: sf: не является именем класса или пространства имен
+     1>d:\github\sfmltest\src\game\input.h(15): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "MousePos"
+     1>d:\github\sfmltest\src\game\input.h(15): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>d:\github\sfmltest\src\game\game.h(17): error C2079: "game::Game::_Render" использует неопределенный class "sf::RenderWindow"
+     1>d:\github\sfmltest\src\game\game.h(18): error C2079: "game::Game::_Event" использует неопределенный class "sf::Event"
+     1>d:\github\sfmltest\src\game\game.h(25): error C2039: string: не является членом "std"
+     1>d:\github\sfmltest\src\game\game.h(25): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>d:\github\sfmltest\src\game\game.h(25): error C2143: синтаксическая ошибка: отсутствие "," перед "&"
+     1>d:\github\sfmltest\src\game\input.cpp(8): error C2511: game::Input::Input(game::Game *): перегруженная функция-член не найдена в "game::Input"
+                 d:\github\sfmltest\src\game\input.h(7): см. объявление "game::Input"
+     1>d:\github\sfmltest\src\game\input.cpp(13): error C2511: void game::Input::ProcessInput(sf::Event): перегруженная функция-член не найдена в "game::Input"
+                 d:\github\sfmltest\src\game\input.h(7): см. объявление "game::Input"
+     1>d:\github\sfmltest\src\game\input.cpp(25): error C2556: sf::Vector2f *game::Input::GetMousePos(void): перегруженная функция отличается от "int *game::Input::GetMousePos(void)" только возвращаемым типом
+                 d:\github\sfmltest\src\game\input.h(12): см. объявление "game::Input::GetMousePos"
+     1>d:\github\sfmltest\src\game\input.cpp(25): error C2371: game::Input::GetMousePos: переопределение; различные базовые типы
+                 d:\github\sfmltest\src\game\input.h(12): см. объявление "game::Input::GetMousePos"
+     1>d:\github\sfmltest\src\game\input.cpp(29): error C2065: MousePos: необъявленный идентификатор
+         Game.cpp
+     1>d:\github\sfmltest\src\game\game.h(17): error C2079: "game::Game::_Render" использует неопределенный class "sf::RenderWindow"
+     1>d:\github\sfmltest\src\game\game.h(18): error C2079: "game::Game::_Event" использует неопределенный class "sf::Event"
+     1>d:\github\sfmltest\src\game\input.h(12): error C2039: Vector2f: не является членом "sf"
+     1>d:\github\sfmltest\src\game\input.h(12): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+     1>d:\github\sfmltest\src\game\input.h(12): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>d:\github\sfmltest\src\game\input.h(12): warning C4183: GetMousePos: отсутствие возвращаемого типа; предполагается функция-член, возвращающая "int"
+     1>d:\github\sfmltest\src\game\input.h(15): error C2039: Vector2f: не является членом "sf"
+     1>d:\github\sfmltest\src\game\input.h(15): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "MousePos"
+     1>d:\github\sfmltest\src\game\input.h(15): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>d:\github\sfmltest\src\game\actor.h(14): error C2039: Vector2f: не является членом "sf"
+     1>d:\github\sfmltest\src\game\actor.h(14): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "MoveDir"
+     1>d:\github\sfmltest\src\game\actor.h(14): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>d:\github\sfmltest\src\game\projectile.h(11): error C2039: CircleShape: не является членом "sf"
+     1>d:\github\sfmltest\src\game\projectile.h(11): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "PlasmaBall"
+     1>d:\github\sfmltest\src\game\projectile.h(11): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>d:\github\sfmltest\src\game\projectile.h(13): error C2039: Vector2f: не является членом "sf"
+     1>d:\github\sfmltest\src\game\projectile.h(13): error C2061: синтаксическая ошибка: идентификатор "Vector2f"
+     1>c1xx : fatal error C1903: не удается восстановить после предыдущих ошибок; остановка компиляции
+         Actor.cpp
+     1>d:\github\sfmltest\src\game\actor.h(11): error C2653: sf: не является именем класса или пространства имен
+     1>d:\github\sfmltest\src\game\actor.h(11): error C2061: синтаксическая ошибка: идентификатор "RenderWindow"
+     1>d:\github\sfmltest\src\game\actor.h(14): error C2653: sf: не является именем класса или пространства имен
+     1>d:\github\sfmltest\src\game\actor.h(14): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "MoveDir"
+     1>d:\github\sfmltest\src\game\actor.h(14): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+         Создание кода...
+     1>Построение проекта "D:\GitHub\SFMLtest\Src\SFML.vcxproj" завершено (целевые объекты Build) с ошибкой.
 
-Построение успешно завершено.
+Сбой построения.
 
-Затраченное время: 00:00:02.18
+Затраченное время: 00:00:02.92

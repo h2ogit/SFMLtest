@@ -33,6 +33,9 @@
     <ClCompile Include="Game\Map.cpp">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Input.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Projectile.h">
@@ -45,6 +48,9 @@
       <Filter>Файлы исходного кода\Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Map.h">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Input.h">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClInclude>
   </ItemGroup>
