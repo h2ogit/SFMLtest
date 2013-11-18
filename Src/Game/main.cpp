@@ -1,7 +1,9 @@
 //#include <iostream>
 //#include <string>
-#include "Game.h"
 #include "SFML/Graphics.hpp"
+#include "Game.h"
+
+using namespace game;
 
 Game* _Game;
 
@@ -23,23 +25,9 @@ int main()
 //Projectile* Projectiles[10];
 //int LastProjectileIdx = 0;
 //
-//Vector2f Normalize2(Vector2f Vec)
-//{
-//  float magnitude = sqrt(Vec.x*Vec.x+Vec.y*Vec.y);
-//  if (magnitude > 0)
-//  {
-//    float invertedMag = 1 / magnitude;
-//    Vec.x *= invertedMag;
-//    Vec.y *= invertedMag;
-//  }
-//  return Vec;
-//}
+
 //
-//bool IsInScreenBounds(Vector2f aPos)
-//{
-//	if ( (aPos.x > 0) && (aPos.x < wWidh) && (aPos.y > 0) && (aPos.y < wHeight) ) return true;
-//	else return false;
-//}
+
 //
 //Vector2f FixScreenPosition(Vector2f aPos)
 //{
@@ -80,6 +68,7 @@ int main()
 //	if (!SkyBoxTexture.loadFromFile(ResPath+"back.jpg")) cout << "SkyBox load error";
 //	SkyBoxTexture.setSmooth(true);
 //	Sprite SkyBox(SkyBoxTexture);
+//	SkyBox.setOrigin(64,64);
 //
 //	Texture NewManTexture; 
 //	if (!NewManTexture.loadFromFile(ResPath+"Newman.png")) cout << "NewMan load error";

@@ -1,16 +1,19 @@
-#include <string>
-#include <iostream>
+#include "SFML/Graphics.hpp"
 #include "Game.h"
 #include "Input.h"
 #include "Actor.h"
 #include "Projectile.h"
-#include "SFML/Graphics.hpp"
+#include "Map.h"
+
+#include <string>
+#include <iostream>
+#include <vector>
 
 using namespace game;
 
 const int wWidh = 1024;
 const int wHeight = 768;
-const std::string gamename = "NewMan killer";
+const std::string gamename = "Steammancer2d";
 
 void Game::log(const std::string &msg)
 {
@@ -24,66 +27,43 @@ Game::Game()
 
 int Game::Start()
 {
-	_Render = sf::RenderWindow(sf::VideoMode(wWidh, wHeight), gamename);
+	_Render = new sf::RenderWindow(sf::VideoMode(wWidh, wHeight), gamename);
 	if (&_Render == nullptr)
 	{
 		log("ERROR: render none");
 		return EXIT_FAILURE;
 	}
-	_Render.setMouseCursorVisible(false);
+	_Render->setMouseCursorVisible(false);
 	bRuning = true;
-	
-
-	// Create some text to draw on top of our OpenGL object
-    //Font font;
-    //if (!font.loadFromFile(ResPath+"sansation.ttf"))
-    //    return EXIT_FAILURE;
-    //Text text("NewMan Killer v0.1b", font);
-    //text.setColor(Color(255, 0, 255, 255));
-    //text.setPosition(wWidh - 300, wHeight-50);
 
 	while (bRuning)
 	{
-		_Render.pollEvent(_Event);
+		_Render->pollEvent(_Event);
 		_Input ->ProcessInput(_Event);
 
-		_Render.clear();
-		//_Render.draw(SkyBox);
-		_Render.display();
+		_Render->clear();
+
+		unsigned int vector_size = Actors.size();
+		for (int i = 0; i < vector_size; i++)
+		{
+			Actors[i]->Update(_Render);
+		}
 		
-
-		//Vector2f NewManPos = GetRandomRuning(NewMan.getPosition());
-		//NewMan.move(NewManPos);
-		////std::cout << "x: " << NewManPos.x << " | y: " << NewManPos.y << endl;
-
-		//Vector2f ZloPos(0,0);
-		//if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) ZloPos.y = -1;
-		//if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) ZloPos.y = 1;
-		//if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) ZloPos.x = -1;
-		//if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) ZloPos.x = 1;
-		//if (IsInScreenBounds(ZloMan.getPosition() + ZloPos)) ZloMan.move(ZloPos);
-
-		//Vector2f NewAimPos;
-		//if (!IsInScreenBounds(MousePos)) NewAimPos = FixScreenPosition(MousePos);
-		//else NewAimPos = MousePos;
-		//Aim.setPosition(NewAimPos);
-
-		//window.clear();
-		//window.draw(SkyBox);
-		//window.draw(NewMan);
-		//window.draw(ZloMan);
-		//for (int i=0; i <10; i++)
-		//{
-		//	if (Projectiles[i] != nullptr)
-		//	{
-		//		Projectiles[i]->Tick(&window);
-		//	}
-		//}
-		//window.draw(Aim);
-		//window.draw(text);
-		
+		_Render->display();	
 	}
 
 	return EXIT_SUCCESS;
 }
+
+void Game::Stop()
+{
+	_Render->close();
+	bRuning = false;
+}
+
+//bool IsInScreenBounds(Vector2f aPos)
+//{
+//	if ( (aPos.x > 0) && (aPos.x < wWidh) && (aPos.y > 0) && (aPos.y < wHeight) ) return true;
+//	else return false;
+//}
 

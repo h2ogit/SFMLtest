@@ -1,22 +1,15 @@
-#include "Projectile.h"
 #include "SFML/Graphics.hpp"
+#include "Actor.h"
+#include "Projectile.h"
 
 using namespace game;
 
-Projectile:: Projectile(sf::Vector2f aLoc, sf::Vector2f aDir)
+void Projectile:: Init(sf::Vector2f aLoc, sf::Vector2f aDir)
 {
-	PlasmaBall.setRadius(10.0f);
-	PlasmaBall.setOrigin(10,10);
-	PlasmaBall.setFillColor(sf::Color::Green);
-	PlasmaBall.setPosition(aLoc);
+	//PlasmaBall->setPosition(aLoc);
 }
 
-Projectile:: ~Projectile()
+void Projectile:: Update(sf::RenderWindow* aWindow)
 {
-	delete &PlasmaBall;
-}
-
-void Projectile:: Tick(sf::RenderWindow* aWindow)
-{
-	aWindow->draw(PlasmaBall);
+	//aWindow->draw(PlasmaBall);
 }

@@ -1,6 +1,5 @@
+#include "SFML/Graphics.hpp"
 #include "Map.h"
-#include <string>
-#include <iostream>
 
 using namespace game;
 
