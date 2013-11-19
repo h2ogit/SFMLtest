@@ -6,11 +6,15 @@ namespace game
 	class Map
 	{
 		public:
-			Map();
+			Map(Game* aGamePtr);
 			~Map();
 
-		private: 
-			std::string ResPath;
+			void StartMap();
+
+			
+
+		private:
+			Game* _Game;
 
 		protected:
 

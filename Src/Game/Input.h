@@ -6,10 +6,11 @@ namespace game
 	class Input
 	{
 		public:
-			Input(Game* aGamePtr);
-			~Input();
-			void ProcessInput(sf::Event aEvent);
-			sf::Vector2f* GetMousePos();
+			//Input();
+			//~Input();
+			void Init(Game* aGamePtr);
+			void ProcessInput(sf::Event* aEvent);
+			sf::Vector2f GetMousePos();
 		private:
 			Game* _Game;
 			sf::Vector2f MousePos;

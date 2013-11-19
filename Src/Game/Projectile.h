@@ -8,10 +8,10 @@ namespace game
 	class Projectile : public Actor
 	{
 		public:
-			//Projectile(sf::Vector2f aLoc, sf::Vector2f aDir);
-			//~Projectile();
-			void Init(sf::Vector2f aLoc, sf::Vector2f aDir);
-			void Update(sf::RenderWindow* aWindow);
+			
+
+		private:
+
 	};
 
 };

@@ -4,12 +4,7 @@
 
 using namespace game;
 
-void Projectile:: Init(sf::Vector2f aLoc, sf::Vector2f aDir)
-{
-	//PlasmaBall->setPosition(aLoc);
-}
-
-void Projectile:: Update(sf::RenderWindow* aWindow)
-{
-	//aWindow->draw(PlasmaBall);
-}
+//void Projectile:: Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
+//{
+//	//aWindow->draw(PlasmaBall);
+//}

@@ -1,9 +1,8 @@
 #include "SFML/Graphics.hpp"
+#include "Game.h"
 #include "Actor.h"
 
 using namespace game;
-
-
 
 sf::Vector2f Actor::Normalize2(sf::Vector2f Vec)
 {
@@ -17,23 +16,51 @@ sf::Vector2f Actor::Normalize2(sf::Vector2f Vec)
   return Vec;
 }
 
-//	Texture SkyBoxTexture; 
-//	if (!SkyBoxTexture.loadFromFile(ResPath+"back.jpg")) cout << "SkyBox load error";
-//	SkyBoxTexture.setSmooth(true);
-//	Sprite SkyBox(SkyBoxTexture);
-//	SkyBox.setOrigin(64,64);
-
-void Actor::Update(sf::RenderWindow* aWindow)
+void Actor::Init(Game* aGamePtr)
 {
-	//aWindow->draw(PlasmaBall);
+	_Game = aGamePtr;
 }
 
-void AddText(std::string aText)
+void Actor::SetLocation(sf::Vector2f aLoc)
 {
-	// Create some text to draw on top of our OpenGL object
-    Font font;
-    if (!font.loadFromFile(ResPath+"sansation.ttf")) return EXIT_FAILURE;
-    Text text("NewMan Killer v0.1b", font);
-    text.setColor(Color(255, 0, 255, 255));
-    text.setPosition(wWidh - 300, wHeight-50);
+	Sprite.setPosition(aLoc);
+}
+
+void Actor::SetRotation(float aRot)
+{
+	Sprite.setRotation(aRot);
+}
+
+void Actor::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
+{
+	if (aWindow != nullptr)
+	{
+		if (&Sprite != nullptr) aWindow->draw(Sprite);
+		if (&Text != nullptr)
+		{
+			Text.setPosition(Sprite.getPosition());
+			Text.setRotation(Sprite.getRotation());
+			aWindow->draw(Text);
+		}
+	}
+}
+
+void Actor::SetTexture(std::string aTex)
+{
+	if (!Texture.loadFromFile(_Game->GetResPath()+aTex)) _Game->log("ERROR::Load::Texture::"+aTex);
+	Texture.setSmooth(true);
+	
+	Sprite.setTexture(Texture);
+
+	sf::Vector2u lTexSize = Texture.getSize();
+	Sprite.setOrigin(lTexSize.x/2, lTexSize.y/2);
+}
+
+
+void Actor::SetText(std::string aText)
+{
+	Text.setFont(_Game->GetFont());
+	Text.setCharacterSize(10);
+	Text.setColor(sf::Color(255, 0, 255, 255));
+    Text.setString(aText);
 }

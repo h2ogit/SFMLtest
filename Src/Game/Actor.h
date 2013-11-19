@@ -3,23 +3,30 @@
 
 namespace game
 {
+	class Game;
+
 	class Actor
 	{
 		public:
-			//Actor();
-			//~Actor();
-			virtual void Update(sf::RenderWindow* aWindow);
+			virtual void Init(Game* aGamePtr);
+			virtual void SetTexture(std::string aTex);
+			virtual void SetText(std::string aText);
+			virtual void SetLocation(sf::Vector2f aLoc);
+			virtual void SetRotation(float aRot);
+
+			virtual void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime); // aDeltaTime.asSeconds();
 
 		protected:
-			sf::Vector2f MoveDir;
+			Game* _Game;
+
 			sf::Texture Texture;
 			sf::Sprite Sprite;
 			sf::Text Text;
 
-			virtual void AddText(std::string aText);
-			virtual sf::Vector2f Normalize2(sf::Vector2f Vec)
-	};
+			sf::Vector2f MoveDir;
 
+			virtual sf::Vector2f Normalize2(sf::Vector2f Vec);
+	};
 };
 
 #endif
