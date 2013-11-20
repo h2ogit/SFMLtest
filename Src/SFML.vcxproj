@@ -172,7 +172,9 @@
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\Input.cpp" />
     <ClCompile Include="Game\main.cpp" />
-    <ClCompile Include="Game\Map.cpp" />
+    <ClCompile Include="Game\Weapon.cpp" />
+    <ClCompile Include="Game\World.cpp" />
+    <ClCompile Include="Game\Object.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Projectile.cpp" />
   </ItemGroup>
@@ -181,7 +183,9 @@
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\Input.h" />
-    <ClInclude Include="Game\Map.h" />
+    <ClInclude Include="Game\Weapon.h" />
+    <ClInclude Include="Game\World.h" />
+    <ClInclude Include="Game\Object.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Projectile.h" />
   </ItemGroup>

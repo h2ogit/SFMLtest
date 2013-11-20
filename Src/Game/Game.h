@@ -3,11 +3,12 @@
 
 namespace game
 {
-	class Player;
 	class Input;
-	class Map;
+	class World;
+
+	class Object;
 	class Actor;
-	class Projectile;
+	class Player;
 
 	enum EActorType
 	{
@@ -24,7 +25,7 @@ namespace game
 			Player* _Player;
 
 			Input* _Input;
-			Map* _Map;
+			World* _World;
 
 			sf::Vector2f ScreenCenter;
 
@@ -36,12 +37,12 @@ namespace game
 			void log(const std::string &msg);
 
 			const std::string* GetResPath();
-			sf::Font& GetFont();
+			const sf::Font& GetFont();
 
-			std::vector<Actor*> Actors;
-			std::vector<Projectile> Projectiles;
+			std::vector<Object*> Objects;
+			//std::vector<Projectile> Projectiles;
 
-			Actor* Spawn(Actor* aActor,  const std::string aTexture, const std::string aText = "", const sf::Vector2f aLoc = sf::Vector2f (0,0), const float aRot = 0.f);
+			Object* Spawn(Object* aObj,  const std::string aTexture, const std::string aText = "", const sf::Vector2f aLoc = sf::Vector2f (0,0), const float aRot = 0.f);
 
 		private: 
 			bool bRuning;

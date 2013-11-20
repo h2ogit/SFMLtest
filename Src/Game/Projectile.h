@@ -3,8 +3,6 @@
 
 namespace game
 {
-	class Actor;
-
 	class Projectile : public Actor
 	{
 		public:

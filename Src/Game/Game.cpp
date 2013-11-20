@@ -1,7 +1,9 @@
 #include "SFML/Graphics.hpp"
 #include "Game.h"
-#include "Map.h"
+#include "World.h"
 #include "Input.h"
+
+#include "Object.h"
 #include "Actor.h"
 #include "Player.h"
 #include "Projectile.h"
@@ -29,6 +31,7 @@ Game::Game()
 		
 	_Render->setMouseCursorVisible(false);
 	_Render->setFramerateLimit(60);
+	_Render->setVerticalSyncEnabled(true);
 
 	ScreenCenter = sf::Vector2f(wWidh, wHeight);
 
@@ -45,16 +48,16 @@ const std::string* Game::GetResPath()
 	return &ResPath;
 }
 
-sf::Font& Game::GetFont()
+const sf::Font& Game::GetFont()
 {
 	return Font;
 }
 
 int Game::Start()
 {
-	_Map = new Map();
-	_Map->Init(this);
-	_Map->StartMap();
+	_World = new World();
+	_World->Init(this);
+	_World->StartWorld();
 
 	_Player = dynamic_cast<Player*>(Spawn(new Player(), "aimcross.png"));
 
@@ -69,10 +72,10 @@ int Game::Start()
 
 		_Render->clear();
 
-		unsigned int vector_size = Actors.size();
+		unsigned int vector_size = Objects.size();
 		for (unsigned int i = 0; i < vector_size; i++)
 		{
-			Actors[i]->Update(_Render, &DeltaTime);
+			Objects[i]->Update(_Render, &DeltaTime);
 		}
 		
 		_Render->display();	
@@ -87,16 +90,16 @@ void Game::Stop()
 	bRuning = false;
 }
 
-Actor* Game::Spawn(Actor* aActor,  const std::string aTexture, const std::string aText, const sf::Vector2f aLoc, const float aRot)
+Object* Game::Spawn(Object* aObj,  const std::string aTexture, const std::string aText, const sf::Vector2f aLoc, const float aRot)
 {
-	aActor->Init(this);
-	aActor->SetTexture(aTexture);
-	aActor->SetText(aText);
-	aActor->SetLocation(aLoc);
-	aActor->SetRotation(aRot);
+	aObj->Init(this);
+	aObj->SetTexture(aTexture);
+	aObj->SetText(aText);
+	aObj->SetLocation(aLoc);
+	aObj->SetRotation(aRot);
 
-	Actors.push_back(aActor);
-	return aActor;
+	Objects.push_back(aObj);
+	return aObj;
 }
 
 //bool IsInScreenBounds(Vector2f aPos)

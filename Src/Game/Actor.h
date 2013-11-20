@@ -3,30 +3,28 @@
 
 namespace game
 {
-	class Game;
+	class Weapon;
 
-	class Actor
+	class Actor : public Object
 	{
 		public:
-			virtual void Init(Game* aGamePtr);
-			virtual void SetTexture(const std::string &aTex);
-			virtual void SetSpriteOrigin(float x, float y);
-			virtual void SetText(const std::string &aText);
-			virtual void SetLocation(sf::Vector2f aLoc);
-			virtual void SetRotation(float aRot);
+			virtual int& GetHealth() {return Health;};
+			virtual void SetHealth(int aValue) {Health = aValue;};
 
-			virtual void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime); // aDeltaTime.asSeconds();
+			virtual int& GetSpeed() {return Speed;};
+			virtual void SetSpeed(int aValue) {Speed = aValue;};
+
+			virtual void Move(sf::Vector2f aValue) {MoveDest = aValue;};
+
+			virtual void SetWeapon(Weapon* aWeapon) {_Weapon = aWeapon;};
 
 		protected:
-			Game* _Game;
+			int Health;
+			int Speed;
 
-			sf::Texture Texture;
-			sf::Sprite Sprite;
-			sf::Text Text;
+			Weapon* _Weapon;
 
-			sf::Vector2f MoveDir;
-
-			virtual sf::Vector2f Normalize2(sf::Vector2f Vec);
+			sf::Vector2f MoveDest;
 	};
 };
 

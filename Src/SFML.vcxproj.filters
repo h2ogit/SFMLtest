@@ -30,9 +30,6 @@
     <ClCompile Include="Game\Actor.cpp">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Map.cpp">
-      <Filter>Файлы исходного кода\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Input.cpp">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
@@ -40,6 +37,15 @@
       <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
     <ClCompile Include="Game\Enemy.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Object.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\World.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Weapon.cpp">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,9 +59,6 @@
     <ClInclude Include="Game\Actor.h">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Map.h">
-      <Filter>Файлы исходного кода\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Input.h">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClInclude>
@@ -63,6 +66,15 @@
       <Filter>Файлы исходного кода\Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Enemy.h">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Object.h">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\World.h">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Weapon.h">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClInclude>
   </ItemGroup>
