@@ -2,6 +2,9 @@
 #include "Game.h"
 #include "Actor.h"
 
+#include <string>
+#include <iostream>
+
 using namespace game;
 
 sf::Vector2f Actor::Normalize2(sf::Vector2f Vec)
@@ -45,9 +48,11 @@ void Actor::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 	}
 }
 
-void Actor::SetTexture(std::string aTex)
+void Actor::SetTexture(const std::string &aTex)
 {
-	if (!Texture.loadFromFile(_Game->GetResPath()+aTex)) _Game->log("ERROR::Load::Texture::"+aTex);
+	std::string file = _Game->GetResPath()->c_str() + aTex;
+
+	if (!Texture.loadFromFile(file)) _Game->log("ERROR::Load::Texture::"+file);
 	Texture.setSmooth(true);
 	
 	Sprite.setTexture(Texture);
@@ -56,8 +61,12 @@ void Actor::SetTexture(std::string aTex)
 	Sprite.setOrigin(lTexSize.x/2, lTexSize.y/2);
 }
 
+void Actor::SetSpriteOrigin(float x, float y)
+{
+	Sprite.setOrigin(x, y);
+}
 
-void Actor::SetText(std::string aText)
+void Actor::SetText(const std::string &aText)
 {
 	Text.setFont(_Game->GetFont());
 	Text.setCharacterSize(10);

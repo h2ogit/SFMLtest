@@ -6,15 +6,12 @@ namespace game
 	class Map
 	{
 		public:
-			Map(Game* aGamePtr);
-			~Map();
-
+			void Init(Game* aGamePtr);
 			void StartMap();
-
-			
 
 		private:
 			Game* _Game;
+			Actor* _Background;
 
 		protected:
 

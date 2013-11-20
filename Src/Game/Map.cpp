@@ -6,12 +6,15 @@
 
 using namespace game;
 
-Map:: Map(Game* aGamePtr)
+void Map:: Init(Game* aGamePtr)
 {
 	_Game = aGamePtr;
 }
 
 void Map:: StartMap()
 {
-	
+	_Background = _Game->Spawn(new Actor(), "back.jpg");
+	_Background->SetSpriteOrigin(0,0);
+
+
 }

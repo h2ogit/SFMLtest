@@ -9,8 +9,9 @@ namespace game
 	{
 		public:
 			virtual void Init(Game* aGamePtr);
-			virtual void SetTexture(std::string aTex);
-			virtual void SetText(std::string aText);
+			virtual void SetTexture(const std::string &aTex);
+			virtual void SetSpriteOrigin(float x, float y);
+			virtual void SetText(const std::string &aText);
 			virtual void SetLocation(sf::Vector2f aLoc);
 			virtual void SetRotation(float aRot);
 

@@ -30,47 +30,49 @@ Game::Game()
 	_Render->setMouseCursorVisible(false);
 	_Render->setFramerateLimit(60);
 
-	_Input = new Input();
-	_Input->Init(this);
-	
-	_Map = new Map(this);
-	_Map->StartMap();
+	ScreenCenter = sf::Vector2f(wWidh, wHeight);
 
 	ResPath = "../Res/";
 	std::string lNewFont = ResPath+"sansation.ttf";
-	if (!_Font.loadFromFile(lNewFont)) log("ERROR::Load::Font::"+lNewFont);
+	if (!Font.loadFromFile(lNewFont)) log("ERROR::Load::Font::"+lNewFont);
+
+	_Input = new Input();
+	_Input->Init(this);
 }
 
-std::string Game::GetResPath()
+const std::string* Game::GetResPath()
 {
-	return ResPath;
+	return &ResPath;
 }
 
-sf::Font Game::GetFont()
+sf::Font& Game::GetFont()
 {
-	return _Font;
+	return Font;
 }
 
 int Game::Start()
 {
-	_Player = dynamic_cast<Player*>(Spawn(Player(), "aimcross.png"));
-	_Player->Init(this);
+	_Map = new Map();
+	_Map->Init(this);
+	_Map->StartMap();
+
+	_Player = dynamic_cast<Player*>(Spawn(new Player(), "aimcross.png"));
 
 	bRuning = true;
 
-	DeltaTime = GameClock.restart();
-
 	while (bRuning)
 	{
-		_Render->pollEvent(_Event);
-		_Input ->ProcessInput(&_Event);
+		DeltaTime = GameClock.restart();
+
+		_Render->pollEvent(Event);
+		_Input ->ProcessInput(&Event);
 
 		_Render->clear();
 
 		unsigned int vector_size = Actors.size();
 		for (unsigned int i = 0; i < vector_size; i++)
 		{
-			Actors[i].Update(_Render, &DeltaTime);
+			Actors[i]->Update(_Render, &DeltaTime);
 		}
 		
 		_Render->display();	
@@ -85,14 +87,16 @@ void Game::Stop()
 	bRuning = false;
 }
 
-Actor* Game:: Spawn(Actor aActor,  const std::string aTexture, const std::string aText, const sf::Vector2f aLoc, const float aRot)
+Actor* Game::Spawn(Actor* aActor,  const std::string aTexture, const std::string aText, const sf::Vector2f aLoc, const float aRot)
 {
-	aActor.SetTexture(aTexture);
-	aActor.SetText(aText);
-	aActor.SetLocation(aLoc);
-	aActor.SetRotation(aRot);
+	aActor->Init(this);
+	aActor->SetTexture(aTexture);
+	aActor->SetText(aText);
+	aActor->SetLocation(aLoc);
+	aActor->SetRotation(aRot);
+
 	Actors.push_back(aActor);
-	return &Actors.back();
+	return aActor;
 }
 
 //bool IsInScreenBounds(Vector2f aPos)
