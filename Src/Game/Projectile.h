@@ -3,13 +3,19 @@
 
 namespace game
 {
-	class Projectile : public Actor
+	class Projectile : public DynamicObject
 	{
 		public:
-			
+			Projectile()
+			{
+				bActivated = false;
+			}
+
+			void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
+			void SerActive(bool bAct) {bActivated = bAct;};
 
 		private:
-
+			bool bActivated;
 	};
 
 };

@@ -5,26 +5,24 @@ namespace game
 {
 	class Weapon;
 
-	class Actor : public Object
+	class Actor : public DynamicObject
 	{
 		public:
 			virtual int& GetHealth() {return Health;};
 			virtual void SetHealth(int aValue) {Health = aValue;};
 
-			virtual int& GetSpeed() {return Speed;};
-			virtual void SetSpeed(int aValue) {Speed = aValue;};
+			virtual void SetWeapon(Weapon* aWeapon, const bool ShouldShowWeapon);
+			virtual Weapon* GetWeapon() {return _Weapon;};
 
-			virtual void Move(sf::Vector2f aValue) {MoveDest = aValue;};
+			virtual void TakeDamage(int aDamage);
+			virtual void Killed();
 
-			virtual void SetWeapon(Weapon* aWeapon) {_Weapon = aWeapon;};
+			virtual void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
 		protected:
 			int Health;
-			int Speed;
 
 			Weapon* _Weapon;
-
-			sf::Vector2f MoveDest;
 	};
 };
 

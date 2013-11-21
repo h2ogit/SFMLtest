@@ -8,6 +8,7 @@ namespace game
 		public:
 			void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
+			void Fire();
 		private:
 			
 	};

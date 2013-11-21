@@ -168,8 +168,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game\Actor.cpp" />
+    <ClCompile Include="Game\DynamicObject.cpp" />
     <ClCompile Include="Game\Enemy.cpp" />
     <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="Game\HUD.cpp" />
     <ClCompile Include="Game\Input.cpp" />
     <ClCompile Include="Game\main.cpp" />
     <ClCompile Include="Game\Weapon.cpp" />
@@ -180,9 +182,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Actor.h" />
+    <ClInclude Include="Game\DynamicObject.h" />
+    <ClInclude Include="Game\Effect.hpp" />
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\HUD.h" />
     <ClInclude Include="Game\Input.h" />
+    <ClInclude Include="Game\Settings.h" />
     <ClInclude Include="Game\Weapon.h" />
     <ClInclude Include="Game\World.h" />
     <ClInclude Include="Game\Object.h" />

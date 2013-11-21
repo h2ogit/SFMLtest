@@ -48,6 +48,12 @@
     <ClCompile Include="Game\Weapon.cpp">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\DynamicObject.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\HUD.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Projectile.h">
@@ -75,6 +81,18 @@
       <Filter>Файлы исходного кода\Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Weapon.h">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Settings.h">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\DynamicObject.h">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\HUD.h">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Effect.hpp">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClInclude>
   </ItemGroup>

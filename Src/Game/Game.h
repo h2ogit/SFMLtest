@@ -3,25 +3,22 @@
 
 namespace game
 {
+	class Settings;
 	class Input;
 	class World;
 
+	class HUD;
+
 	class Object;
+	class DynamicObject;
 	class Actor;
 	class Player;
-
-	enum EActorType
-	{
-		EAT_Actor,
-		EAT_Player,
-		EAT_Enemy,
-		EAT_Projectile,
-	};
 
 	class Game
 	{
 		public:
-			
+			Settings* _Settings;
+
 			Player* _Player;
 
 			Input* _Input;
@@ -36,7 +33,7 @@ namespace game
 			void Stop();
 			void log(const std::string &msg);
 
-			const std::string* GetResPath();
+			//const std::string* GetResPath();
 			const sf::Font& GetFont();
 
 			std::vector<Object*> Objects;
@@ -47,13 +44,13 @@ namespace game
 		private: 
 			bool bRuning;
 
-			std::string ResPath;
-
 			sf::RenderWindow* _Render;
 			sf::Font Font;
 			sf::Event Event;
 			sf::Clock GameClock;
 			sf::Time DeltaTime;
+
+			HUD* _HUD;
 
 	};
 };

@@ -1,11 +1,9 @@
 #include "SFML/Graphics.hpp"
 
 #include "Game.h"
+#include "Settings.h"
 
 #include "Object.h"
-
-//#include <string>
-//#include <iostream>
 
 using namespace game;
 
@@ -52,7 +50,7 @@ void Object::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 
 void Object::SetTexture(const std::string &aTex)
 {
-	std::string file = _Game->GetResPath()->c_str() + aTex;
+	std::string file = _Game->_Settings->ResPath + aTex;
 
 	if (!Texture.loadFromFile(file)) _Game->log("ERROR::Load::Texture::"+file);
 	Texture.setSmooth(true);
