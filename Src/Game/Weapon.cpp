@@ -20,5 +20,15 @@ void Weapon:: Fire(sf::Vector2f atLoc)
 {
 	_Effect = new StormBlink();
 	_Effect->load();
-	_Effect->update(clock.getElapsedTime().asSeconds(), x, y);
+	_Effect->update(0.2, atLoc.x, atLoc.y);
+}
+
+void Weapon::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
+{
+	if (aWindow != nullptr)
+	{
+		if (_Effect != nullptr) _Effect->update(aDeltaTime->asSeconds(), 540, 600);
+	}
+
+	Object::Update(aWindow, aDeltaTime);
 }
