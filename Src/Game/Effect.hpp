@@ -66,8 +66,8 @@ namespace game
 				m_points.setPrimitiveType(sf::Points);
 				for (int i = 0; i < 40000; ++i)
 				{
-					float x = static_cast<float>(std::rand() % 800);
-					float y = static_cast<float>(std::rand() % 600);
+					float x = static_cast<float>(std::rand() % 20);
+					float y = static_cast<float>(std::rand() % 20);
 					sf::Uint8 r = std::rand() % 255;
 					sf::Uint8 g = std::rand() % 255;
 					sf::Uint8 b = std::rand() % 255;
@@ -75,7 +75,8 @@ namespace game
 				}
 
 				// Load the shader
-				if (!m_shader.loadFromFile("Res/Shaders/storm.vert", "Res/Shaders/blink.frag"))
+				//if (!m_shader.loadFromFile("../Res/Shaders/storm.vert", "../Res/Shaders/blink.frag"))
+				if (!m_shader.loadFromFile("../Res/Shaders/storm.vert", "../Res/Shaders/blink.frag"))
 					return false;
 
 				return true;

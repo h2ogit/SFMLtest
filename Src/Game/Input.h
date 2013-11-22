@@ -3,6 +3,8 @@
 
 namespace game
 {
+	class sf::Event;
+
 	class Input
 	{
 		public:
@@ -11,11 +13,13 @@ namespace game
 			void Init(Game* aGamePtr);
 			void ProcessInput(sf::Event* aEvent);
 			sf::Vector2f GetMousePos();
+
 		private:
 			Game* _Game;
 			sf::Vector2f MousePos;
-		protected:
 
+		protected:
+			void MouseButtonReleased();
 	};
 };
 

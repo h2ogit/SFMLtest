@@ -4,7 +4,7 @@
 #include "DynamicObject.h"
 #include "Projectile.h"
 
-#include "Effect.hpp"
+#include "Game.h"
 
 #include "Weapon.h"
 
@@ -18,17 +18,7 @@ void Weapon:: ShowWeapon(const bool ShouldShowWeapon)
 
 void Weapon:: Fire(sf::Vector2f atLoc)
 {
-	_Effect = new StormBlink();
-	_Effect->load();
-	_Effect->update(0.2, atLoc.x, atLoc.y);
-}
-
-void Weapon::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
-{
-	if (aWindow != nullptr)
-	{
-		if (_Effect != nullptr) _Effect->update(aDeltaTime->asSeconds(), 540, 600);
-	}
-
-	Object::Update(aWindow, aDeltaTime);
+	Projectile* lProj = dynamic_cast<Projectile*>(_Game->Spawn(new Projectile(*_Projectile), "red_dot.png", true, "", Sprite.getPosition(), Sprite.getRotation()));
+	lProj->SetOwner(this);
+	lProj->Fire(atLoc);
 }

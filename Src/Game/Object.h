@@ -15,7 +15,13 @@ namespace game
 			virtual void SetLocation(sf::Vector2f aLoc);
 			virtual void SetRotation(float aRot);
 
-			virtual void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime); // aDeltaTime.asSeconds();
+			virtual void SetOwner(Object* aNewOwner) {_Owner = aNewOwner;};
+
+			virtual void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
+
+			virtual bool CanCollide() {return bCollideObjects;};
+
+			virtual void Destroy();
 
 		protected:
 			Game* _Game;
@@ -25,6 +31,16 @@ namespace game
 			sf::Text Text;
 
 			virtual sf::Vector2f Normalize2(sf::Vector2f Vec);
+
+			virtual sf::FloatRect Object::getBoundingRect() const;
+
+			virtual bool Object::CheckCollisionWith(Object* aObj);
+
+			virtual Object* Object::GetCollidedObject();
+
+			Object* _Owner;
+
+			bool bCollideObjects;
 	};
 };
 

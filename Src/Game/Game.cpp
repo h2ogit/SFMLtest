@@ -12,9 +12,8 @@
 #include "Projectile.h"
 
 
-#include <string>
 #include <iostream>
-#include <vector>
+//#include <vector>
 
 using namespace game;
 
@@ -25,7 +24,12 @@ void Game::log(const std::string &msg)
 
 Game::Game()
 {
-	_Settings = new Settings();
+	_World = nullptr;
+	_Player = nullptr;
+
+	//_Settings = pS(new Settings());
+	//_Settings = std::shared_ptr<Settings>(new Settings());
+	_Settings = pS(Settings)(new Settings());
 
 	_Render = new sf::RenderWindow(sf::VideoMode(_Settings->wWidh, _Settings->wHeight), _Settings->GameName);
 	if (_Render == nullptr) log("ERROR: render none");
@@ -91,7 +95,7 @@ void Game::Stop()
 	bRuning = false;
 }
 
-Object* Game::Spawn(Object* aObj,  const std::string aTexture, const std::string aText, const sf::Vector2f aLoc, const float aRot)
+Object* Game::Spawn(Object* aObj,  const std::string aTexture, const bool bCanCollide, const std::string aText, const sf::Vector2f aLoc, const float aRot)
 {
 	aObj->Init(this);
 	aObj->SetTexture(aTexture);
@@ -103,6 +107,10 @@ Object* Game::Spawn(Object* aObj,  const std::string aTexture, const std::string
 	return aObj;
 }
 
+void Game::UnSpawn(Object* aObj)
+{
+
+}
 //bool IsInScreenBounds(Vector2f aPos)
 //{
 //	if ( (aPos.x > 0) && (aPos.x < wWidh) && (aPos.y > 0) && (aPos.y < wHeight) ) return true;

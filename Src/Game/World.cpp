@@ -21,7 +21,7 @@ void World:: Init(Game* aGamePtr)
 
 void World:: StartWorld()
 {
-	_Background = _Game->Spawn(new Object(), _Game->_Settings->WorldBackgroundTexture);
+	_Background = _Game->Spawn(new Object(), _Game->_Settings->WorldBackgroundTexture, false);
 	_Background->SetSpriteOrigin(0,0);
 
 

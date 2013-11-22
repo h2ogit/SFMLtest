@@ -5,6 +5,8 @@
 
 #include "Object.h"
 
+#include <iostream>
+
 using namespace game;
 
 sf::Vector2f Object::Normalize2(sf::Vector2f Vec)
@@ -72,4 +74,39 @@ void Object::SetText(const std::string &aText)
 	Text.setCharacterSize(10);
 	Text.setColor(sf::Color(255, 0, 255, 255));
     Text.setString(aText);
+}
+
+sf::FloatRect Object::getBoundingRect() const
+{
+	return Sprite.getGlobalBounds();
+}
+
+bool Object::CheckCollisionWith(Object* aObj)
+{
+	return getBoundingRect().intersects(aObj->getBoundingRect());
+}
+
+Object* Object::GetCollidedObject()
+{
+	unsigned int vector_size = _Game->Objects.size();
+	for (unsigned int i = 0; i < vector_size; i++)
+	{
+		if (this == _Game->Objects[i]) continue;
+
+		if (_Game->Objects[i]->CanCollide())
+		{
+			if (CheckCollisionWith(_Game->Objects[i]))
+			{
+				std::cout << _Game->Objects[i] << std::endl;
+				return _Game->Objects[i];
+			}
+		}
+	}
+	return nullptr;
+}
+
+void Object::Destroy()
+{
+	_Game->UnSpawn(this);
+	
 }

@@ -4,8 +4,6 @@
 namespace game
 {
 	class Projectile;
-	class Effect;
-	class StormBlink;
 
 	class Weapon : public Object
 	{
@@ -32,14 +30,12 @@ namespace game
 
 			void Fire(sf::Vector2f atLoc);
 
-			void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
+			//void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
 		private:
 			int Damage;
 			int FireRate;
 			Projectile* _Projectile;
-
-			StormBlink* _Effect;
 
 			EWeaponType WeaponType;
 	};

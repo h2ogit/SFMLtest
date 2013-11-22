@@ -13,7 +13,7 @@ void HUD::Init(Game* aGamePtr)
 
 	Load(HUDBackgroundSprite, HUDBackgroundTexture, _Game->_Settings->HUDBackgroundTexture, sf::Vector2f(128, 704));
 	Load(PlayerSprite, PlayerTexture, _Game->_Settings->PlayerTexture, sf::Vector2f(70, 705));
-	PlayerSprite.setScale(sf::Vector2f(0.9, 0.9));
+	PlayerSprite.setScale(sf::Vector2f(0.9f, 0.9f));
 	Load(WeaponSprite, WeaponTexture, _Game->_Settings->Weapon1Texture, sf::Vector2f(200, 745));
 }
 

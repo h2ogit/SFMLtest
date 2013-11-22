@@ -23,5 +23,5 @@ void Player:: Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 
 void Player:: Fire()
 {
-	//_Weapon->Fire(Sprite.getPosition());
+	_Weapon->Fire(Sprite.getPosition());
 }
