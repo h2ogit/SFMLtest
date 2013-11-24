@@ -22,8 +22,6 @@ namespace game
 	class Game
 	{
 		public:
-			//Settings* _Settings;
-
 			pS(Settings) _Settings;
 
 			Player* _Player;
@@ -31,7 +29,7 @@ namespace game
 			Input* _Input;
 			World* _World;
 
-			sf::Vector2f ScreenCenter;
+			sf::Vector2i ScreenCenter;
 
 			Game();
 			~Game();
@@ -44,9 +42,8 @@ namespace game
 			const sf::Font& GetFont();
 
 			std::vector<Object*> Objects;
-			//std::vector<Projectile> Projectiles;
 
-			Object* Spawn(Object* aObj,  const std::string aTexture, const bool bCanCollide = true, const std::string aText = "", const sf::Vector2f aLoc = sf::Vector2f (0,0), const float aRot = 0.f);
+			Object* Spawn(Object* aObj,  const std::string aTexture, const bool bCanCollide = true, const Object* aOwner = nullptr, const sf::Vector2f aLoc = sf::Vector2f (0,0), const float aRot = 0.f);
 			void UnSpawn(Object* aObj);
 
 		private: 

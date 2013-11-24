@@ -17,7 +17,7 @@ void HUD::Init(Game* aGamePtr)
 	Load(WeaponSprite, WeaponTexture, _Game->_Settings->Weapon1Texture, sf::Vector2f(200, 745));
 }
 
-void HUD::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
+void HUD::UpdateHUD(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 {
 	if (aWindow != nullptr)
 	{

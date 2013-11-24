@@ -70,7 +70,7 @@ namespace game
 				AimTexture = "aimcross.png";
 			
 				Enemy1Health = 20;
-				Enemy1Speed = 2;
+				Enemy1Speed = 200;
 
 				Enemy2Health = 30;
 				Enemy2Speed = 3;

@@ -76,6 +76,16 @@ void Object::SetText(const std::string &aText)
     Text.setString(aText);
 }
 
+bool Object::CanCollide()
+{
+	return bCollideObjects;
+}
+
+void Object::SetCollision(bool bCollide)
+{
+	bCollideObjects = bCollide;
+}
+
 sf::FloatRect Object::getBoundingRect() const
 {
 	return Sprite.getGlobalBounds();
@@ -91,13 +101,12 @@ Object* Object::GetCollidedObject()
 	unsigned int vector_size = _Game->Objects.size();
 	for (unsigned int i = 0; i < vector_size; i++)
 	{
-		if (this == _Game->Objects[i]) continue;
+		if ( (this == _Game->Objects[i]) ) continue;
 
 		if (_Game->Objects[i]->CanCollide())
 		{
 			if (CheckCollisionWith(_Game->Objects[i]))
 			{
-				std::cout << _Game->Objects[i] << std::endl;
 				return _Game->Objects[i];
 			}
 		}
@@ -108,5 +117,20 @@ Object* Object::GetCollidedObject()
 void Object::Destroy()
 {
 	_Game->UnSpawn(this);
-	
+	_Owner = nullptr;
+	_Game = nullptr;
+	bCollideObjects = false;
+
+	//Texture = NULL;
+	//Sprite;
+	//Text;
+}
+
+bool Object:: IsOutOfWorldBound()
+{
+	int h = _Game->_Settings->wHeight;
+	int w = _Game->_Settings->wWidh;
+	sf::Vector2f lPos = Sprite.getPosition();
+	if ( (lPos.x >= 0) && (lPos.x <= w) && (lPos.y >= 0) && (lPos.y <= h) ) return false;
+	else return true;
 }

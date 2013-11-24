@@ -8,6 +8,11 @@ namespace game
 	class Weapon : public Object
 	{
 		public:
+			Weapon()
+			{
+				_Projectile = nullptr;
+			}
+
 			enum EWeaponType
 			{
 				EWT_Gun,
@@ -30,7 +35,7 @@ namespace game
 
 			void Fire(sf::Vector2f atLoc);
 
-			//void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
+			virtual void Destroy();
 
 		private:
 			int Damage;

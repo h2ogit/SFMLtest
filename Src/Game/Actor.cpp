@@ -18,7 +18,7 @@ void Actor::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 		if (_Weapon != nullptr) _Weapon->SetLocation(Sprite.getPosition());
 	}
 
-	Object::Update(aWindow, aDeltaTime);
+	DynamicObject::Update(aWindow, aDeltaTime);
 }
 
 void Actor:: SetWeapon(Weapon* aWeapon, const bool ShouldShowWeapon)
@@ -35,5 +35,15 @@ void Actor:: TakeDamage(int aDamage)
 
 void Actor:: Killed()
 {
+	Destroy();
+}
 
+void Actor::Destroy()
+{
+	Health = 0;
+
+	delete _Weapon;
+	_Weapon = nullptr;
+
+	DynamicObject::Destroy();
 }

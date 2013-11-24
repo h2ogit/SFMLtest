@@ -13,7 +13,6 @@
 
 
 #include <iostream>
-//#include <vector>
 
 using namespace game;
 
@@ -27,8 +26,6 @@ Game::Game()
 	_World = nullptr;
 	_Player = nullptr;
 
-	//_Settings = pS(new Settings());
-	//_Settings = std::shared_ptr<Settings>(new Settings());
 	_Settings = pS(Settings)(new Settings());
 
 	_Render = new sf::RenderWindow(sf::VideoMode(_Settings->wWidh, _Settings->wHeight), _Settings->GameName);
@@ -38,7 +35,7 @@ Game::Game()
 	_Render->setFramerateLimit(60);
 	_Render->setVerticalSyncEnabled(true);
 
-	ScreenCenter = sf::Vector2f(_Settings->wWidh, _Settings->wHeight);
+	ScreenCenter = sf::Vector2i(_Settings->wWidh, _Settings->wHeight);
 
 	std::string lNewFont = _Settings->ResPath+_Settings->FontFile;
 	if (!Font.loadFromFile(lNewFont)) log("ERROR::Load::Font::"+lNewFont);
@@ -61,7 +58,7 @@ int Game::Start()
 	_World->Init(this);
 	_World->StartWorld();
 
-	_Player = dynamic_cast<Player*>(Spawn(new Player(), _Settings->AimTexture));
+	_Player = new Player();
 	_World->InitPlayer(_Player);
 
 	bRuning = true;
@@ -75,13 +72,17 @@ int Game::Start()
 
 		_Render->clear();
 
+		_World->UpdateWorld(_Render, &DeltaTime);
+
 		unsigned int vector_size = Objects.size();
 		for (unsigned int i = 0; i < vector_size; i++)
 		{
 			Objects[i]->Update(_Render, &DeltaTime);
 		}
 
-		_HUD->Update(_Render, &DeltaTime);
+		_HUD->UpdateHUD(_Render, &DeltaTime);
+
+		_Player->Update(_Render, &DeltaTime);
 		
 		_Render->display();	
 	}
@@ -95,13 +96,14 @@ void Game::Stop()
 	bRuning = false;
 }
 
-Object* Game::Spawn(Object* aObj,  const std::string aTexture, const bool bCanCollide, const std::string aText, const sf::Vector2f aLoc, const float aRot)
+Object* Game::Spawn(Object* aObj,  const std::string aTexture, const bool bCanCollide, const Object* aOwner, const sf::Vector2f aLoc, const float aRot)
 {
 	aObj->Init(this);
 	aObj->SetTexture(aTexture);
-	aObj->SetText(aText);
 	aObj->SetLocation(aLoc);
 	aObj->SetRotation(aRot);
+	aObj->SetCollision(bCanCollide);
+	aObj->SetOwner(aOwner);
 
 	Objects.push_back(aObj);
 	return aObj;
@@ -109,11 +111,17 @@ Object* Game::Spawn(Object* aObj,  const std::string aTexture, const bool bCanCo
 
 void Game::UnSpawn(Object* aObj)
 {
-
+	unsigned int vector_size = Objects.size();
+	unsigned int delidx = 0;
+	for (unsigned int i = 0; i < vector_size; i++)
+	{
+		if (Objects[i] == aObj)
+		{
+			delidx = i;
+			break;
+		}
+	}
+	Objects.erase(Objects.begin() + delidx);
 }
-//bool IsInScreenBounds(Vector2f aPos)
-//{
-//	if ( (aPos.x > 0) && (aPos.x < wWidh) && (aPos.y > 0) && (aPos.y < wHeight) ) return true;
-//	else return false;
-//}
+
 

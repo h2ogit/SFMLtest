@@ -8,11 +8,16 @@ namespace game
 	class HUD
 	{
 		public:
+			HUD()
+			{
+				_Game = nullptr;
+			}
+
 			void Init(Game* aGamePtr);
 
 			void Load(sf::Sprite &aSprite, sf::Texture &aTexture, const std::string &aTextureName = "", const sf::Vector2f &aPosition = sf::Vector2f(0,0));
 
-			void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
+			void UpdateHUD(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
 			void SetKilled(int aKilled) {AllKilled = aKilled;};
 

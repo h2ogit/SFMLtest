@@ -8,6 +8,11 @@ namespace game
 	class Actor : public DynamicObject
 	{
 		public:
+			Actor()
+			{
+				_Weapon = nullptr;
+			}
+
 			virtual int& GetHealth() {return Health;};
 			virtual void SetHealth(int aValue) {Health = aValue;};
 
@@ -18,6 +23,8 @@ namespace game
 			virtual void Killed();
 
 			virtual void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
+
+			virtual void Destroy();
 
 		protected:
 			int Health;

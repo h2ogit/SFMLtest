@@ -8,6 +8,12 @@ namespace game
 	class Object
 	{
 		public:
+			Object()
+			{
+				_Game = nullptr;
+				_Owner = nullptr;
+			}
+
 			virtual void Init(Game* aGamePtr);
 			virtual void SetTexture(const std::string &aTex);
 			virtual void SetSpriteOrigin(float x, float y);
@@ -15,16 +21,21 @@ namespace game
 			virtual void SetLocation(sf::Vector2f aLoc);
 			virtual void SetRotation(float aRot);
 
-			virtual void SetOwner(Object* aNewOwner) {_Owner = aNewOwner;};
+			virtual void SetOwner(const Object* aNewOwner = nullptr) {_Owner = aNewOwner;};
 
 			virtual void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
-			virtual bool CanCollide() {return bCollideObjects;};
+			virtual bool CanCollide();
+			virtual void SetCollision(bool bCollide);
 
 			virtual void Destroy();
 
 		protected:
 			Game* _Game;
+
+			const Object* _Owner;
+
+			bool bCollideObjects;
 
 			sf::Texture Texture;
 			sf::Sprite Sprite;
@@ -38,9 +49,7 @@ namespace game
 
 			virtual Object* Object::GetCollidedObject();
 
-			Object* _Owner;
-
-			bool bCollideObjects;
+			bool IsOutOfWorldBound();
 	};
 };
 

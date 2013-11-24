@@ -9,20 +9,29 @@ namespace game
 			DynamicObject()
 			{
 				bMoving = false;
+				bMoveFinished = false;
 			}
 
-			virtual int& GetSpeed() {return Speed;};
-			virtual void SetSpeed(int aValue) {Speed = aValue;};
+			virtual float& GetSpeed() {return Speed;};
+			virtual void SetSpeed(float aValue) {Speed = aValue;};
 
-			virtual void SetMoveLocation(sf::Vector2f aValue) {MoveDest = aValue; bMoving = true;};
-
+			virtual void SetMoveLocation(sf::Vector2f aValue) {MoveDest = aValue; bMoving = true; bMoveFinished = false;};
+			
 			virtual void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
+			virtual void Destroy();
+
 		protected:
-			int Speed;
+			float Speed;
 			sf::Vector2f MoveDest;
 
 			bool bMoving;
+			bool bMoveFinished;
+
+		private:
+			bool IsDestinationReached();
+			virtual void Move(sf::Vector2f aLoc);
+
 	};
 };
 

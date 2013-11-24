@@ -8,8 +8,11 @@ namespace game
 	class Input
 	{
 		public:
-			//Input();
-			//~Input();
+			Input()
+			{
+				_Game = nullptr;
+			}
+			
 			void Init(Game* aGamePtr);
 			void ProcessInput(sf::Event* aEvent);
 			sf::Vector2f GetMousePos();

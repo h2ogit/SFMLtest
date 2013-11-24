@@ -12,27 +12,34 @@ namespace game
 			Projectile()
 			{
 				bActivated = false;
-				bHitTarget = false;
+				bPlayEffect = false;
+				bInstantHit = false;
+				bWasHit = false;
 				_Effect = nullptr;
 			}
 
 			void Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
-			bool Fire(const sf::Vector2f aLoc = sf::Vector2f(0,0), const int aDamage = 0);
+			bool Fire(const sf::Vector2f aLoc = sf::Vector2f(0,0));
 
 			void Destroy();
 
-			void SetDamage(int aValue) {Damage = aValue;};
+			void SetDamage(const int aValue = 0) {Damage = aValue;};
+
+			void SetInstantHit(bool bInstHit);
 
 		private:
 			bool bActivated;
-
-			bool bHitTarget;
+			bool bInstantHit;
+			bool bPlayEffect;
+			
+			bool bWasHit;
 
 			StormBlink* _Effect;
-			//float EffectDurration;
 
-			void HitTarget(Object* aTarget);
+			void MakeDamage(Object* aTarget);
+
+			void PlayEffects(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
 			int Damage; //set from weapon
 	};
