@@ -26,7 +26,7 @@ Game::Game()
 	_World = nullptr;
 	_Player = nullptr;
 
-	_Settings = pS(Settings)(new Settings());
+	_Settings = new Settings();
 
 	_Render = new sf::RenderWindow(sf::VideoMode(_Settings->wWidh, _Settings->wHeight), _Settings->GameName);
 	if (_Render == nullptr) log("ERROR: render none");
@@ -58,7 +58,7 @@ int Game::Start()
 	_World->Init(this);
 	_World->StartWorld();
 
-	_Player = new Player();
+	_Player = (new Player());
 	_World->InitPlayer(_Player);
 
 	bRuning = true;
@@ -73,15 +73,17 @@ int Game::Start()
 		_Render->clear();
 
 		_World->UpdateWorld(_Render, &DeltaTime);
+		_Render->
 
 		unsigned int vector_size = Objects.size();
 		for (unsigned int i = 0; i < vector_size; i++)
 		{
-			Objects[i]->Update(_Render, &DeltaTime);
+			//if (Objects[i] != nullptr) 
+				Objects[i]->Update(_Render, &DeltaTime);
 		}
 
 		_HUD->UpdateHUD(_Render, &DeltaTime);
-
+		
 		_Player->Update(_Render, &DeltaTime);
 		
 		_Render->display();	
@@ -121,7 +123,7 @@ void Game::UnSpawn(Object* aObj)
 			break;
 		}
 	}
-	Objects.erase(Objects.begin() + delidx);
+	Objects.erase(Objects.begin() + delidx -1);
 }
 
 

@@ -22,7 +22,7 @@ namespace game
 	class Game
 	{
 		public:
-			pS(Settings) _Settings;
+			Settings* _Settings;
 
 			Player* _Player;
 

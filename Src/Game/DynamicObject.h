@@ -21,6 +21,9 @@ namespace game
 
 			virtual void Destroy();
 
+			bool IsDestinationReached();
+			virtual void Move(sf::Vector2f aLoc);
+
 		protected:
 			float Speed;
 			sf::Vector2f MoveDest;
@@ -29,8 +32,7 @@ namespace game
 			bool bMoveFinished;
 
 		private:
-			bool IsDestinationReached();
-			virtual void Move(sf::Vector2f aLoc);
+			
 
 	};
 };

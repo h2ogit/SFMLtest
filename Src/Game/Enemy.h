@@ -14,6 +14,10 @@ namespace game
 			sf::Vector2f GetRandomLocation();
 			float GetRandomRotation();
 
+			std::string& GetRandomWord();
+
+			std::vector<std::string> words;
+
 			int wW, wH;
 	};
 

@@ -19,7 +19,8 @@ namespace game
 
 			void UpdateHUD(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
-			void SetKilled(int aKilled) {AllKilled = aKilled;};
+			void SetKilled(int aKilled) {NewmansKilled = aKilled;};
+			void SetLost(int aLost) {NewmansLost = aLost;};
 
 		private:
 			Game* _Game;
@@ -33,9 +34,13 @@ namespace game
 			sf::Texture WeaponTexture;
 			sf::Sprite WeaponSprite;
 
-			int AllKilled;
-			sf::Text AllKilledText;
+			int NewmansKilled;
+			sf::Text NewmansKilledText;
+			sf::Text NewmansKilledTextStatic;
 
+			int NewmansLost;
+			sf::Text NewmansLostText;
+			sf::Text NewmansLostStatic;
 	};
 };
 

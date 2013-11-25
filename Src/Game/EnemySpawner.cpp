@@ -18,7 +18,7 @@ void EnemySpawner:: Init(Game* aGamePtr)
 {
 	_Game = aGamePtr;
 	StartTime = 1.0f;
-	SpawnTime = 0.7f;
+	SpawnTime = 0.25f;
 	TimeElapse = 0;
 	LastSpawnTime = 0;
 }

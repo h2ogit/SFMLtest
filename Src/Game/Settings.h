@@ -54,7 +54,7 @@ namespace game
 			{
 				wWidh = 1024;
 				wHeight = 768;
-				GameName = "Steammancer2d";
+				GameName = "Angry NewMan";
 				ResPath = "../Res/";
 
 				FontFile = "sansation.ttf";

@@ -71,8 +71,8 @@ void Object::SetSpriteOrigin(float x, float y)
 void Object::SetText(const std::string &aText)
 {
 	Text.setFont(_Game->GetFont());
-	Text.setCharacterSize(10);
-	Text.setColor(sf::Color(255, 0, 255, 255));
+	Text.setCharacterSize(20);
+	Text.setColor(sf::Color(255, 255, 255, 255));
     Text.setString(aText);
 }
 
