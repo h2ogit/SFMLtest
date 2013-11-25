@@ -50,7 +50,11 @@ void World:: InitPlayer(Player* aPlayer)
 	aPlayer->SetCollision(false);
 	aPlayer->SetHealth(_Game->_Settings->PlayerHealth);
 	aPlayer->SetSpeed(_Game->_Settings->PlayerSpeed);
-	Weapon* lWeapon = dynamic_cast<Weapon*>(_Game->Spawn(new Weapon(), _Game->_Settings->Weapon1Texture, false));
+	//Weapon* lWeapon = dynamic_cast<Weapon*>(_Game->Spawn(new Weapon(), _Game->_Settings->Weapon1Texture, false));
+	Weapon* lWeapon = new Weapon();
+	lWeapon->Init(_Game);
+	lWeapon->SetCollision(false);
+	lWeapon->SetTexture(_Game->_Settings->Weapon1Texture);
 	lWeapon->SetDamage(_Game->_Settings->Weapon1Damage);
 	lWeapon->SetFireRate(_Game->_Settings->Weapon1FireRate);
 	lWeapon->SetWeaponType(Weapon::EWeaponType::EWT_Gun);

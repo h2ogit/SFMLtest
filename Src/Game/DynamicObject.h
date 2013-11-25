@@ -21,8 +21,9 @@ namespace game
 
 			virtual void Destroy();
 
-			bool IsDestinationReached();
+			bool IsDestinationReached(const float aFactor = 10.0f);
 			virtual void Move(sf::Vector2f aLoc);
+			virtual void Rotate(float aDegree);
 
 		protected:
 			float Speed;

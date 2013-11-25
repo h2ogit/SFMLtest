@@ -1,4 +1,5 @@
 #include "SFML/Graphics.hpp"
+
 #include "Settings.h"
 #include "HUD.h"
 #include "Game.h"
@@ -42,6 +43,9 @@ Game::Game()
 
 	_HUD = new HUD();
 	_HUD->Init(this);
+	NewmansKilled = 0;
+	NewmansLost = 0;
+	NewmansLive = 0;
 
 	_Input = new Input();
 	_Input->Init(this);
@@ -73,20 +77,22 @@ int Game::Start()
 		_Render->clear();
 
 		_World->UpdateWorld(_Render, &DeltaTime);
-		_Render->
 
 		unsigned int vector_size = Objects.size();
 		for (unsigned int i = 0; i < vector_size; i++)
 		{
-			//if (Objects[i] != nullptr) 
-				Objects[i]->Update(_Render, &DeltaTime);
+			if (Objects[i] != nullptr) Objects[i]->Update(_Render, &DeltaTime);
 		}
+
+		NewmansLive = vector_size;
 
 		_HUD->UpdateHUD(_Render, &DeltaTime);
 		
 		_Player->Update(_Render, &DeltaTime);
 		
-		_Render->display();	
+		_Render->display();
+
+		ProcessTrash();
 	}
 
 	return EXIT_SUCCESS;
@@ -123,7 +129,23 @@ void Game::UnSpawn(Object* aObj)
 			break;
 		}
 	}
-	Objects.erase(Objects.begin() + delidx -1);
+	Objects.erase(Objects.begin() + delidx);
 }
 
+void Game::TrashCollect(Object* aObj)
+{
+	TrashCollector.push_back(aObj);
+}
+
+void Game::ProcessTrash()
+{
+	unsigned int vector_size = TrashCollector.size();
+	for (unsigned int i = 0; i < vector_size; i++)
+	{
+		TrashCollector[i]->Destroy();
+		UnSpawn(TrashCollector[i]);
+		delete TrashCollector[i];
+	}
+	TrashCollector.clear();
+}
 

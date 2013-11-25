@@ -46,6 +46,12 @@ namespace game
 			Object* Spawn(Object* aObj,  const std::string aTexture, const bool bCanCollide = true, const Object* aOwner = nullptr, const sf::Vector2f aLoc = sf::Vector2f (0,0), const float aRot = 0.f);
 			void UnSpawn(Object* aObj);
 
+			void TrashCollect(Object*);
+
+			int NewmansKilled;
+			int NewmansLost;
+			int NewmansLive;
+
 		private: 
 			bool bRuning;
 
@@ -56,6 +62,9 @@ namespace game
 			sf::Time DeltaTime;
 
 			HUD* _HUD;
+
+			std::vector<Object*> TrashCollector;
+			void ProcessTrash();
 
 	};
 };

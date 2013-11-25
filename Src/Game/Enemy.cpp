@@ -50,6 +50,11 @@ std::string& Enemy:: GetRandomWord()
 	return words[ret];
 }
 
+Enemy::EBehavior Enemy:: GetRandomBehavior()
+{
+	return EBehavior(rand() % 4);
+}
+
 void Enemy:: Activate()
 {
 	SetLocation(GetRandomLocation());
@@ -57,6 +62,7 @@ void Enemy:: Activate()
 	SetRotation(GetRandomRotation());
 	SetText(GetRandomWord());
 	Text.setOrigin(-35,-25);
+	Behavior = GetRandomBehavior();
 }
 
 
@@ -65,11 +71,15 @@ void Enemy:: Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 	if ( (!bMoving) && (bMoveFinished) && (Health >0) )
 	{
 		SetMoveLocation(GetRandomLocation());
+		Behavior = GetRandomBehavior();
 	}
 
 	if (IsOutOfWorldBound())
 	{
-		Destroy();
+		_Game->NewmansLost++;
+
+		PrepareForDestroy();
+
 		return;
 	}
 
@@ -83,12 +93,41 @@ void Enemy:: Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 				bMoveFinished = true;
 			}
 
-			sf::Vector2f movepoint = Speed * Normalize2(MoveDest - Sprite.getPosition()) * aDeltaTime->asSeconds();
+			sf::Vector2f movepoint;
+			float rotangle = 0;
 
-			movepoint.x = 500*(rand()%5)*std::sinf(movepoint.x) * aDeltaTime->asSeconds();
-			movepoint.y = 500*(rand()%5)*std::sinf(movepoint.y) * aDeltaTime->asSeconds();
+			switch (Behavior)
+			{
+				case game::Enemy::EM_Lin:
+					movepoint = Speed * Normalize2(MoveDest - Sprite.getPosition()) * aDeltaTime->asSeconds();
+				break;
+
+				case game::Enemy::EM_LinRot:
+					movepoint = Speed * Normalize2(MoveDest - Sprite.getPosition()) * aDeltaTime->asSeconds();
+					rotangle = float((rand() % 100)/100.0f);
+				break;
+
+				case game::Enemy::EM_Sin:
+					movepoint.x = 5 + 100*(rand()%3)*std::sinf(MoveDest.x) * aDeltaTime->asSeconds();
+					movepoint.y = 5 + 100*(rand()%3)*std::sinf(MoveDest.y) * aDeltaTime->asSeconds();
+				break;
+
+				case game::Enemy::EM_Cos:
+					movepoint.x = 5 + 100*(rand()%3)*std::cosf(MoveDest.x) * aDeltaTime->asSeconds();
+					movepoint.y = 5 + 100*(rand()%3)*std::cosf(MoveDest.y) * aDeltaTime->asSeconds();
+				break;
+
+				case game::Enemy::EM_Tan:
+					movepoint.x = 5 + 100*(rand()%3)*std::tanf(MoveDest.x) * aDeltaTime->asSeconds();
+					movepoint.y = 5 + 100*(rand()%3)*std::tanf(MoveDest.y) * aDeltaTime->asSeconds();
+				break;
+
+				default:
+				break;
+			}
 
 			Move(movepoint);
+			Rotate(rotangle);
 		}
 		
 		if (&Sprite != nullptr) aWindow->draw(Sprite);
@@ -99,4 +138,10 @@ void Enemy:: Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 			aWindow->draw(Text);
 		}
 	}
+}
+
+void Enemy:: Killed()
+{
+	_Game->NewmansKilled++;
+	Actor::Killed();
 }

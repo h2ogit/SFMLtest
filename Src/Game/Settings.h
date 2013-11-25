@@ -82,7 +82,7 @@ namespace game
 				Weapon1FireRate = 0.2f;
 				Weapon1Texture = "WeaponL.png";
 				Weapon1ProjectileSpeed = 10;
-				Weapon1ProjectileTexture = "ue4logo.jpg";
+				Weapon1ProjectileTexture = "aimcross.png";
 				
 
 				Weapon2Damage = 25;

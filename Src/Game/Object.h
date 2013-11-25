@@ -30,6 +30,8 @@ namespace game
 
 			virtual void Destroy();
 
+			virtual void PrepareForDestroy() final;
+
 		protected:
 			Game* _Game;
 

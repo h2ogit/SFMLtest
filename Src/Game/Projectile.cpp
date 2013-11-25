@@ -24,7 +24,8 @@ void Projectile::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 		{
 			if (IsOutOfWorldBound())
 			{
-				Destroy();
+				bActivated = false;
+				PrepareForDestroy();
 				return;
 			}
 
@@ -40,7 +41,7 @@ void Projectile::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 				bMoving = false;
 				bActivated = false;
 				//PlayEffects(aWindow, aDeltaTime);
-				Destroy();
+				PrepareForDestroy();
 				return;
 			}
 

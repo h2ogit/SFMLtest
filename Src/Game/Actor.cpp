@@ -35,7 +35,7 @@ void Actor:: TakeDamage(int aDamage)
 
 void Actor:: Killed()
 {
-	Destroy();
+	PrepareForDestroy();
 }
 
 void Actor::Destroy()

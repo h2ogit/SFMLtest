@@ -114,18 +114,6 @@ Object* Object::GetCollidedObject()
 	return nullptr;
 }
 
-void Object::Destroy()
-{
-	_Game->UnSpawn(this);
-	_Owner = nullptr;
-	_Game = nullptr;
-	bCollideObjects = false;
-
-	//Texture = NULL;
-	//Sprite;
-	//Text;
-}
-
 bool Object:: IsOutOfWorldBound()
 {
 	int h = _Game->_Settings->wHeight;
@@ -133,4 +121,17 @@ bool Object:: IsOutOfWorldBound()
 	sf::Vector2f lPos = Sprite.getPosition();
 	if ( (lPos.x >= 0) && (lPos.x <= w) && (lPos.y >= 0) && (lPos.y <= h) ) return false;
 	else return true;
+}
+
+void Object:: PrepareForDestroy()
+{
+	_Game->TrashCollect(this);
+}
+
+void Object:: Destroy()
+{
+	//_Game->UnSpawn(this);
+	_Owner = nullptr;
+	_Game = nullptr;
+	bCollideObjects = false;
 }

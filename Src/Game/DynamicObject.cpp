@@ -39,11 +39,16 @@ void DynamicObject::Move(sf::Vector2f aLoc)
 	Sprite.move(aLoc);
 }
 
-bool DynamicObject::IsDestinationReached()
+void DynamicObject::Rotate(float aDegree)
+{
+	Sprite.rotate(aDegree);
+}
+
+bool DynamicObject::IsDestinationReached(const float aFactor)
 {
 	sf::Vector2f v1, v2;
 	v1 = Sprite.getPosition();
 	v2 = MoveDest;
-	if ( (abs(v1.x - v2.x) <= 5) && (abs(v1.y - v2.y) <= 5) ) return true;
+	if ( (abs(v1.x - v2.x) <= aFactor) && (abs(v1.y - v2.y) <= aFactor) ) return true;
 	else return false;
 }
