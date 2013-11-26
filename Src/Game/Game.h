@@ -22,12 +22,15 @@ namespace game
 	class Game
 	{
 		public:
-			Settings* _Settings;
+			pS(Settings) _Settings;
 
 			Player* _Player;
 
 			Input* _Input;
+
 			World* _World;
+
+			HUD* _HUD;
 
 			sf::Vector2i ScreenCenter;
 
@@ -60,11 +63,10 @@ namespace game
 			sf::Event Event;
 			sf::Clock GameClock;
 			sf::Time DeltaTime;
-
-			HUD* _HUD;
+			pS(sf::Music) _GameMusic;
 
 			std::vector<Object*> TrashCollector;
-			void ProcessTrash();
+			void ProcessTrash();		
 
 	};
 };

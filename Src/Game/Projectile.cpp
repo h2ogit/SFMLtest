@@ -1,4 +1,5 @@
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 #include "Object.h"
 #include "DynamicObject.h"

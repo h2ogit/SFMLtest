@@ -1,4 +1,5 @@
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 #include "Settings.h"
 #include "HUD.h"
@@ -22,12 +23,25 @@ void Game::log(const std::string &msg)
 	std::cout << msg << std::endl;
 }
 
+Game::~Game()
+{
+	//delete _Settings;
+	//delete _GameMusic;
+
+	delete _World;
+	delete _Player;	
+	delete _HUD;
+	delete _Input;
+	delete _Render;
+
+}
+
 Game::Game()
 {
 	_World = nullptr;
 	_Player = nullptr;
 
-	_Settings = new Settings();
+	_Settings = pS(Settings)(new Settings());
 
 	_Render = new sf::RenderWindow(sf::VideoMode(_Settings->wWidh, _Settings->wHeight), _Settings->GameName);
 	if (_Render == nullptr) log("ERROR: render none");
@@ -49,6 +63,10 @@ Game::Game()
 
 	_Input = new Input();
 	_Input->Init(this);
+
+	_GameMusic = pS(sf::Music)(new sf::Music());
+	if (!_GameMusic->openFromFile(_Settings->ResPath+_Settings->MusicFile)) log("ERROR::Load::Music");
+	_GameMusic->setLoop(true);
 }
 
 const sf::Font& Game::GetFont()
@@ -66,6 +84,8 @@ int Game::Start()
 	_World->InitPlayer(_Player);
 
 	bRuning = true;
+
+	_GameMusic->play();
 
 	while (bRuning)
 	{

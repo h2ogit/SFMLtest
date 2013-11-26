@@ -1,4 +1,5 @@
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 #include "Game.h"
 #include "Settings.h"
@@ -19,6 +20,15 @@ std::string IntToStr(int tmp)
 void HUD::Init(Game* aGamePtr)
 {
 	_Game = aGamePtr;
+
+	bMessageShown = false;
+	MessageDurationElapsed = 0.0f;
+	MessageDurationMax = 0.0f;
+	Message.setFont(_Game->GetFont());
+	Message.setCharacterSize(30);
+	Message.setColor(sf::Color(0, 255, 255, 255));
+	Message.setString("");
+	Message.setPosition(float(_Game->_Settings->wWidh/2), float(_Game->_Settings->wHeight/2 -15));
 
 	Load(HUDBackgroundSprite, HUDBackgroundTexture, _Game->_Settings->HUDBackgroundTexture, sf::Vector2f(128, 704));
 	Load(PlayerSprite, PlayerTexture, _Game->_Settings->PlayerTexture, sf::Vector2f(70, 705));
@@ -97,6 +107,22 @@ void HUD::UpdateHUD(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 			NewmansLiveText.setString(IntToStr(_Game->NewmansLive));
 			aWindow->draw(NewmansLiveText);
 		}
+
+		if (bMessageShown)
+		{
+			MessageDurationElapsed += aDeltaTime->asSeconds();
+			if (MessageDurationElapsed < MessageDurationMax)
+			{
+				if (&Message != nullptr) aWindow->draw(Message);
+			}
+			else
+			{
+				bMessageShown = false;
+				Message.setString("");
+				MessageDurationElapsed = 0.0f;
+				MessageDurationMax = 0.0f;
+			}
+		}
 	}
 }
 
@@ -113,4 +139,17 @@ void HUD::Load(sf::Sprite &aSprite, sf::Texture &aTexture, const std::string &aT
 	aSprite.setOrigin(bounds.width/2, bounds.height/2);
 
 	aSprite.setPosition(aPosition);
+}
+
+void HUD:: ShowMessage(std::string aMsg, float aDuration)
+{
+	bMessageShown = true;
+	Message.setString(aMsg);
+	MessageDurationMax = aDuration;
+}
+
+void HUD:: ShowWaveMessage(int aWaveNum, float aDuration)
+{
+	std::string newmsg = "Wave #"+IntToStr(aWaveNum)+" is starting...";
+	ShowMessage(newmsg, aDuration);
 }

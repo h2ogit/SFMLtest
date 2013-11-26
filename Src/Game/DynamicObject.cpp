@@ -1,4 +1,5 @@
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 #include "Object.h"
 
@@ -18,7 +19,7 @@ void DynamicObject::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 				bMoveFinished = true;
 			}
 
-			sf::Vector2f movepoint = Speed * Normalize2(MoveDest - Sprite.getPosition()) * aDeltaTime->asSeconds();
+			sf::Vector2f movepoint = float(Speed) * Normalize2(MoveDest - Sprite.getPosition()) * aDeltaTime->asSeconds();
 
 			Move(movepoint);
 		}

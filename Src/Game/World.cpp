@@ -1,4 +1,5 @@
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 #include "Game.h"
 #include "Settings.h"
@@ -57,6 +58,7 @@ void World:: InitPlayer(Player* aPlayer)
 	lWeapon->SetTexture(_Game->_Settings->Weapon1Texture);
 	lWeapon->SetDamage(_Game->_Settings->Weapon1Damage);
 	lWeapon->SetFireRate(_Game->_Settings->Weapon1FireRate);
+	lWeapon->SetSound(_Game->_Settings->WeaponSound);
 	lWeapon->SetWeaponType(Weapon::EWeaponType::EWT_Gun);
 	lWeapon->SetOwner(aPlayer);
 	Projectile* lProjectileTemplate = new Projectile();

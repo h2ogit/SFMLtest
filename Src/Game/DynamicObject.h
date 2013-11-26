@@ -12,8 +12,8 @@ namespace game
 				bMoveFinished = false;
 			}
 
-			virtual float& GetSpeed() {return Speed;};
-			virtual void SetSpeed(float aValue) {Speed = aValue;};
+			virtual int& GetSpeed() {return Speed;};
+			virtual void SetSpeed(int aValue) {Speed = aValue;};
 
 			virtual void SetMoveLocation(sf::Vector2f aValue) {MoveDest = aValue; bMoving = true; bMoveFinished = false;};
 			
@@ -26,7 +26,7 @@ namespace game
 			virtual void Rotate(float aDegree);
 
 		protected:
-			float Speed;
+			int Speed;
 			sf::Vector2f MoveDest;
 
 			bool bMoving;

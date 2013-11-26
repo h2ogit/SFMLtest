@@ -1,16 +1,19 @@
-﻿Построение начато 25.11.2013 22:18:02.
-     1>Проект "D:\Dev\GitHub\SFMLtest\Src\SFML.vcxproj" в узле 2 (целевые объекты Build).
+﻿Построение начато 26.11.2013 16:47:40.
+     1>Проект "D:\GitHub\SFMLtest\Src\SFML.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"Include\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"TEMP\\" /Fd"TEMP\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Game\Enemy.cpp Game\EnemySpawner.cpp
-         Enemy.cpp
-     1>d:\dev\github\sfmltest\src\game\enemy.cpp(36): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
-     1>d:\dev\github\sfmltest\src\game\enemy.cpp(37): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
-     1>d:\dev\github\sfmltest\src\game\enemy.cpp(43): warning C4244: return: преобразование "int" в "float", возможна потеря данных
-         Создание кода...
-         Пропуск... (изменения не обнаружены)
+         D:\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"Include\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"TEMP\\" /Fd"TEMP\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Game\Enemy.cpp Game\EnemySpawner.cpp Game\Game.cpp Game\HUD.cpp Game\Object.cpp Game\Weapon.cpp Game\World.cpp
+         World.cpp
+         Weapon.cpp
+         Game.cpp
          EnemySpawner.cpp
+         Enemy.cpp
+         Создание кода...
+         Компиляция...
+         Object.cpp
+         HUD.cpp
+         Создание кода...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\bin\Win32\SFMLWin32Debug.exe" /INCREMENTAL /NOLOGO /LIBPATH:"Include\SFML-2.1\lib" "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-main-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"..\bin\Win32\SFMLWin32Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\bin\Win32\SFMLWin32Debug.lib" /MACHINE:X86 TEMP\Actor.obj
+         D:\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\bin\Win32\SFMLWin32Debug.exe" /INCREMENTAL /NOLOGO /LIBPATH:"Include\SFML-2.1\lib" "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-main-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"..\bin\Win32\SFMLWin32Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\bin\Win32\SFMLWin32Debug.lib" /MACHINE:X86 TEMP\Actor.obj
          TEMP\DynamicObject.obj
          TEMP\Enemy.obj
          TEMP\EnemySpawner.obj
@@ -23,9 +26,9 @@
          TEMP\Object.obj
          TEMP\Player.obj
          TEMP\Projectile.obj
-         SFML.vcxproj -> D:\Dev\GitHub\SFMLtest\Src\..\bin\Win32\SFMLWin32Debug.exe
-     1>Построение проекта "D:\Dev\GitHub\SFMLtest\Src\SFML.vcxproj" завершено (целевые объекты Build).
+         SFML.vcxproj -> D:\GitHub\SFMLtest\Src\..\bin\Win32\SFMLWin32Debug.exe
+     1>Построение проекта "D:\GitHub\SFMLtest\Src\SFML.vcxproj" завершено (целевые объекты Build).
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:01.06
+Затраченное время: 00:00:07.47

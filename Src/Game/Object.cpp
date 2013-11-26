@@ -1,4 +1,5 @@
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 #include "Game.h"
 #include "Settings.h"
@@ -48,6 +49,14 @@ void Object::Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 			aWindow->draw(Text);
 		}
 	}
+}
+
+void Object::SetSound(const std::string &aSound)
+{
+	std::string file = _Game->_Settings->ResPath + aSound;
+	if (!SoundBuffer.loadFromFile(file)) _Game->log("ERROR::Load::Sound::"+file);
+
+	Sound.setBuffer(SoundBuffer);
 }
 
 void Object::SetTexture(const std::string &aTex)

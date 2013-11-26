@@ -22,7 +22,15 @@ namespace game
 			float LastSpawnTime;
 			float TimeElapse;
 
+			float BossTime;
+			float BossLastSpawnTime;
+
+			int Wave;
+			float WaveTime;
+			float WaveTimeElapse;
+
 			void SpawnEnemy();
+			void SpawnBoss();
 
 	};
 

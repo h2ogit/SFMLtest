@@ -22,8 +22,8 @@ namespace game
 			int& GetDamage() {return Damage;};
 			void SetDamage(int aValue) {Damage = aValue;};
 
-			int& GetFireRate() {return FireRate;};
-			void SetFireRate(int aValue) {FireRate = aValue;};
+			float& GetFireRate() {return FireRate;};
+			void SetFireRate(float aValue) {FireRate = aValue;};
 
 			EWeaponType& GetWeaponType() {return WeaponType;};
 			void SetWeaponType(EWeaponType aWeaponType) {WeaponType = aWeaponType;};
@@ -39,7 +39,7 @@ namespace game
 
 		private:
 			int Damage;
-			int FireRate;
+			float FireRate;
 			Projectile* _Projectile;
 
 			EWeaponType WeaponType;

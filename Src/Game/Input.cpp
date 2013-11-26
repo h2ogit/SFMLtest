@@ -1,5 +1,6 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window/Event.hpp"
+#include "SFML/Audio.hpp"
 
 #include "Game.h"
 
@@ -21,8 +22,8 @@ void Input::ProcessInput(sf::Event* aEvent)
 {
 	if (aEvent->type == sf::Event::MouseMoved)
 	{
-		MousePos.x = aEvent->mouseMove.x;
-		MousePos.y = aEvent->mouseMove.y;
+		MousePos.x = float(aEvent->mouseMove.x);
+		MousePos.y = float(aEvent->mouseMove.y);
 	}
 	//if (aEvent.type == sf::Event::MouseButtonPressed) MouseButtonPressed(aEvent.mouseButton);
 	if (aEvent->type == sf::Event::MouseButtonReleased) MouseButtonReleased();

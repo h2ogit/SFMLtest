@@ -1,4 +1,5 @@
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 #include "Game.h"
 #include "Settings.h"
@@ -33,14 +34,14 @@ void Enemy:: Init(Game* aGamePtr)
 	
 sf::Vector2f Enemy:: GetRandomLocation()
 {
-	float x = rand() % wW;
-	float y = rand() % wH;
+	float x = float(rand() % wW);
+	float y = float(rand() % wH);
 	return sf::Vector2f(x,y);
 }
 
 float Enemy:: GetRandomRotation()
 {
-	return rand() % 360;
+	return float(rand() % 360);
 }
 
 std::string& Enemy:: GetRandomWord()
@@ -99,11 +100,11 @@ void Enemy:: Update(sf::RenderWindow* aWindow, sf::Time* aDeltaTime)
 			switch (Behavior)
 			{
 				case game::Enemy::EM_Lin:
-					movepoint = Speed * Normalize2(MoveDest - Sprite.getPosition()) * aDeltaTime->asSeconds();
+					movepoint = float(Speed) * Normalize2(MoveDest - Sprite.getPosition()) * aDeltaTime->asSeconds();
 				break;
 
 				case game::Enemy::EM_LinRot:
-					movepoint = Speed * Normalize2(MoveDest - Sprite.getPosition()) * aDeltaTime->asSeconds();
+					movepoint = float(Speed) * Normalize2(MoveDest - Sprite.getPosition()) * aDeltaTime->asSeconds();
 					rotangle = float((rand() % 100)/100.0f);
 				break;
 
@@ -144,4 +145,5 @@ void Enemy:: Killed()
 {
 	_Game->NewmansKilled++;
 	Actor::Killed();
+	Sound.play();
 }

@@ -19,6 +19,10 @@ namespace game
 
 			void UpdateHUD(sf::RenderWindow* aWindow, sf::Time* aDeltaTime);
 
+			void ShowMessage(std::string aMsg, float aDuration);
+
+			void ShowWaveMessage(int aWaveNum, float aDuration);
+
 		private:
 			Game* _Game;
 
@@ -39,6 +43,11 @@ namespace game
 			
 			sf::Text NewmansLiveText;
 			sf::Text NewmansLiveTextStatic;
+
+			bool bMessageShown;
+			sf::Text Message;
+			float MessageDurationMax;
+			float MessageDurationElapsed;
 	};
 };
 

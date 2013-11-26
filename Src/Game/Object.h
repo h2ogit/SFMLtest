@@ -20,6 +20,7 @@ namespace game
 			virtual void SetText(const std::string &aText);
 			virtual void SetLocation(sf::Vector2f aLoc);
 			virtual void SetRotation(float aRot);
+			virtual void SetSound(const std::string &aSound);
 
 			virtual void SetOwner(const Object* aNewOwner = nullptr) {_Owner = aNewOwner;};
 
@@ -42,6 +43,8 @@ namespace game
 			sf::Texture Texture;
 			sf::Sprite Sprite;
 			sf::Text Text;
+			sf::SoundBuffer SoundBuffer;
+			sf::Sound Sound;
 
 			virtual sf::Vector2f Normalize2(sf::Vector2f Vec);
 

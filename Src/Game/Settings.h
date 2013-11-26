@@ -20,6 +20,8 @@ namespace game
 
 			std::string HUDBackgroundTexture;
 
+			std::string MusicFile;
+
 			int PlayerHealth;
 			int PlayerSpeed;
 			std::string PlayerTexture;
@@ -28,18 +30,25 @@ namespace game
 			
 			int Enemy1Health;
 			int Enemy1Speed;
+			std::string Enemy1Texture;
 
 			int Enemy2Health;
 			int Enemy2Speed;
+			std::string Enemy2Texture;
 
 			int EnemyBossHealth;
 			int EnemyBossSpeed;
+			std::string EnemyBossTexture;
+
+			std::string EnemyDeathSound;
 
 			int Weapon1Damage;
 			float Weapon1FireRate;
 			std::string Weapon1Texture;
 			int Weapon1ProjectileSpeed;
 			std::string Weapon1ProjectileTexture;
+			
+			std::string WeaponSound;
 
 			int Weapon2Damage;
 			float Weapon2FireRate;
@@ -62,6 +71,8 @@ namespace game
 				WorldBackgroundTexture = "back.jpg";
 
 				HUDBackgroundTexture = "HUD.png";
+
+				MusicFile = "Music/music.ogg";
 				
 				PlayerHealth = 100;
 				PlayerSpeed = 5;
@@ -71,19 +82,25 @@ namespace game
 			
 				Enemy1Health = 20;
 				Enemy1Speed = 200;
+				Enemy1Texture = "Newman.png";
 
 				Enemy2Health = 30;
-				Enemy2Speed = 3;
+				Enemy2Speed = 300;
+				Enemy2Texture = "NewmanEvil.png";
 
 				EnemyBossHealth = 200;
-				EnemyBossSpeed = 6;
+				EnemyBossSpeed = 50;
+				EnemyBossTexture = "ue4logo.png";
+
+				EnemyDeathSound = "devil.WAV";
 
 				Weapon1Damage = 10;
 				Weapon1FireRate = 0.2f;
 				Weapon1Texture = "WeaponL.png";
 				Weapon1ProjectileSpeed = 10;
 				Weapon1ProjectileTexture = "aimcross.png";
-				
+			
+				WeaponSound = "chpok.wav";
 
 				Weapon2Damage = 25;
 				Weapon2FireRate = 0.4f;
